@@ -9,8 +9,8 @@ def home(request):
         'name': 'Lucas Vinicius'
     })
 
-def about(request):
-    return HttpResponse('My about')
+def recipe(request):
+    return HttpResponse('Testandozinho about')
 
 def contact(request):
     return HttpResponse('My contact')

@@ -2,10 +2,9 @@ from django.contrib import admin
 from django.http import HttpResponse
 from django.urls import path
 
-from recipes.views import about, contact, home
+from recipes.views import home
+from . import views
 
 urlpatterns = [
-    path('', home ),
-    path('contact/', contact ),
-    path('about/', about ),
+    path('', views.home ),
 ]
