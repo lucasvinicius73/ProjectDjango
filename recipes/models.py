@@ -1,8 +1,13 @@
-from django.db import models
 from django.contrib.auth.models import User
+from django.db import models
+
 
 class Category(models.Model):
     name = models.CharField(max_length=50)
+
+    #Função para referenciar o objeto pelo nome, ele vai mostrar o nome ao inves de Objeto A,B ou C
+    def __str__(self):
+        return self.name
 
 class Recipe(models.Model):
     title = models.CharField(max_length=65)
@@ -24,3 +29,6 @@ class Recipe(models.Model):
     author = models.ForeignKey(
         User, on_delete=models.SET_NULL, null=True
     )
+
+    def __str__(self):
+        return self.title
