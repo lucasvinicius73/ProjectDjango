@@ -6,12 +6,9 @@
 	{% for recipe in recipes %}
 		{% include 'recipes/partials/recipe.html' %}
 	{% empty %}
-		<div style= "text-align: center" >
+		<div style= "text-align: center; height: max-content;" >
 			<h1>Nenhuma Receita encontrada :( </h1>
 		</div>
-	{% endfor %}
-	{% for recipe in recipes %}
-	{% include 'recipes/partials/recipe.html' %}
 	{% endfor %}
 </div>
 {% endblock content %}

@@ -18,8 +18,8 @@ def home(request):
 def recipe(request, id):
     recipe = get_object_or_404(
         Recipe,
-         id = id,
-          is_published = True)
+        id = id,
+        is_published = True)
     
     return render(request, 'recipes/pages/recipe-view.html', context={
         'recipe': recipe,
@@ -39,4 +39,4 @@ def category(request, category_id):
     })
 
 def contact(request):
-    return HttpResponse('My contact')
+    return HttpResponse('My contact') 
