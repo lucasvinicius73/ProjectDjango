@@ -1,14 +1,14 @@
+import os
+
+from django.contrib import messages
 from django.db.models import Q
 from django.http.response import Http404
 from django.shortcuts import get_list_or_404, get_object_or_404, render
-from utils.pagination import make_pagination
 
 from recipes.models import Recipe
-import os
+from utils.pagination import make_pagination
 
-PER_PAGE = os.environ.get('PER_PAGE', 6)
-
-
+PER_PAGE = int(os.environ.get('PER_PAGE', 6))
 
 def home(request):
     recipes = Recipe.objects.filter(
@@ -16,7 +16,6 @@ def home(request):
     ).order_by('-id')
 
     page_obj, pagination_range = make_pagination(request, recipes, PER_PAGE)
-
     return render(request, 'recipes/pages/home.html', context={
         'recipes': page_obj,
         'pagination_range': pagination_range
@@ -50,6 +49,7 @@ def recipe(request, id):
 
 
 def search(request):
+    messages.success(request, 'EAE MEU CHAPA')
     search_term = request.GET.get('q', '').strip()
 
     if not search_term:
@@ -65,7 +65,7 @@ def search(request):
 
     page_obj, pagination_range = make_pagination(request, recipes, PER_PAGE)
 
-    return render(request, 'recipes/pages/search.html', {
+    return render(request, 'recipes/pages/search.html', {''
         'page_title': f'Search for "{search_term}" |',
         'search_term': search_term,
         'recipes': page_obj,
