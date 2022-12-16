@@ -49,7 +49,6 @@ def recipe(request, id):
 
 
 def search(request):
-    messages.success(request, 'EAE MEU CHAPA')
     search_term = request.GET.get('q', '').strip()
 
     if not search_term:
